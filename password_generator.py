@@ -24,7 +24,9 @@ choices = [nr_letters, nr_numbers, nr_symbols]
 
 password = []
 
-for i in range(0, 3):
-    password.append("".join(elements[i][:int(choices[i])]))
+for i in range(0,3):
+  password = password + elements[i][:int(choices[i])]
+
+random.shuffle(password)
 password = "".join(password)
 print(password)
