@@ -1,0 +1,32 @@
+import art 
+import random 
+import game_data
+
+print(art.logo)
+score = 0
+a = random.randint(0,len(game_data.data)-1)
+winning = True
+
+def format_account(account):
+  '''Formats the account to be printed for the game.'''
+  return f"{game_data.data[account]['name']}, a {game_data.data[account]['description']} from {game_data.data[account]['country']}."
+
+while winning:
+  b = random.randint(0,len(game_data.data)-1)
+  
+  if game_data.data[a]['follower_count'] > game_data.data[b]['follower_count']:
+    winner = 'a'
+  else:
+    winner = 'b'
+
+  print(f"Compare A: {format_account(a)}\n{art.vs}")
+  print(f"Against B: {format_account(b)}")
+  choice = input("Who has more followers, A or B? ").lower()
+
+  if choice == winner:
+    score += 1
+    a = b
+    print(f"You're right! Current score: {score}")
+  else:
+    winning = False
+    print(f"Sorry, that's wrong. Your final score is {score}.")
